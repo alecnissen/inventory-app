@@ -60,7 +60,7 @@ console.log(
   }
 
   // item create function 
-  async function itemCreate(index, name, description, category, price, numberInStock) { 
+  async function itemCreate(index, name, description, category, price, numberInStock, aisle) { 
     const newItem = new item(
       { 
         index: 0,
@@ -68,7 +68,8 @@ console.log(
         description: description,
         category: category,
         price: price,
-        numberInStock: numberInStock
+        numberInStock: numberInStock,
+        aisle: aisle
       }); 
     await newItem.save();
     items[index] = newItem;
@@ -147,13 +148,13 @@ console.log(
   async function createItem() { 
     console.log('Adding an item');
     await Promise.all([
-      itemCreate(0, 'apple', 'an apple', categories[0], 2, 10),
-      itemCreate(1, 'kale', 'green kale', categories[1], 3, 15),
-      itemCreate(2, 'chicken', '1ib of chicken', categories[2], 5, 25),
-      itemCreate(3, 'package of bread', '1 package of bread', categories[3], 3, 40),
-      itemCreate(4, 'gallon of milk', '1 gallon of milk', categories[4], 5, 10),
-      itemCreate(5, 'kombucha', '1 12oz bottle of kombucha', categories[5], 6, 6),
-      itemCreate(6, 'paper towels', '1 package of paper towels, 3 pack', categories[6], 10, 20),
+      itemCreate(0, 'apple', 'an apple', categories[0], 2, 10, 1),
+      itemCreate(1, 'kale', 'green kale', categories[1], 3, 15, 1),
+      itemCreate(2, 'chicken', '1ib of chicken', categories[2], 5, 25, 3),
+      itemCreate(3, 'package of bread', '1 package of bread', categories[3], 3, 40, 2),
+      itemCreate(4, 'gallon of milk', '1 gallon of milk', categories[4], 5, 10, 4),
+      itemCreate(5, 'kombucha', '1 12oz bottle of kombucha', categories[5], 6, 6, 6),
+      itemCreate(6, 'paper towels', '1 package of paper towels, 3 pack', categories[6], 10, 20, 5),
     ])
   }
 

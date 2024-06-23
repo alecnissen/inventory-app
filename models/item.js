@@ -7,6 +7,7 @@ const ItemSchema = new Schema({
   category: { type: Schema.Types.ObjectId, ref: 'Category', required: true, maxLength: 50 },
   price: { type: Number, required: true, maxLength: 50 },
   numberInStock: { type: Number, required: true, maxLength: 50 },
+  aisle: { type: Number, required: true, maxLength: 50 }
 });
 
 
