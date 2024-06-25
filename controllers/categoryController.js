@@ -18,7 +18,7 @@ exports.category_list = asyncHandler(async (req, res, next) => {
     try {
         console.log('Category list controller called');
         const allCategories = await Category.find().exec();
-        res.render('category_list', {
+        res.render('index', {
             title: 'Category List',
             category_list: allCategories
         });
