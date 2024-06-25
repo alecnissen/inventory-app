@@ -7,3 +7,6 @@ router.get('/', function(req, res, next) {
 });
 
 module.exports = router;
+
+
+// render category list on the homepage 
