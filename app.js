@@ -8,6 +8,8 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var categoryRouter = require('./routes/categories');
 
+const createCategoryRouter = require('./routes/create_category');
+
 var app = express();
 
 // mongoose connection 
@@ -35,6 +37,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/create_category', createCategoryRouter);
 app.use('/categories', categoryRouter);
 
 // catch 404 and forward to error handler

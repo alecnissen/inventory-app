@@ -1,0 +1,11 @@
+home index will list all categories 
+---categories need to be links that when clicked goes to that category page and lists ItemSchema
+
+---option to create new category 
+---option to create new item
+
+today make the routes/controller, view for creating new category 
+
+and creating a new item 
+
+it will link to a form
