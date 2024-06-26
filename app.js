@@ -9,6 +9,7 @@ var usersRouter = require('./routes/users');
 var categoryRouter = require('./routes/categories');
 
 const createCategoryRouter = require('./routes/create_category');
+const createItemRouter = require('./routes/create_item');
 
 var app = express();
 
@@ -38,6 +39,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/create_category', createCategoryRouter);
+app.use('/create_item', createItemRouter);
+
+
 app.use('/categories', categoryRouter);
 
 // catch 404 and forward to error handler
