@@ -14,4 +14,12 @@ it will link to a form
 ////////
 
 
-look over the code again, to understand it 
+look over the code again, to understand it /
+
+GOAL: 
+
+to update the form to match all parameters and  
+
+perform post request on form, 
+
+so when form is submitted it can display new category and new item 
