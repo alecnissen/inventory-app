@@ -9,3 +9,9 @@ today make the routes/controller, view for creating new category
 and creating a new item 
 
 it will link to a form
+
+
+////////
+
+
+look over the code again, to understand it 

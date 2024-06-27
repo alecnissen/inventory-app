@@ -15,7 +15,9 @@
 
 
     <% category_list.forEach((category) => { %>
-        <p> <%= category.name %> </p>
+      <a href="/categories/<%= category._id %>">
+        <p><%= category.name %></p>
+      </a>
        <% }) %> 
 
 

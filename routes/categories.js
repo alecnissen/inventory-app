@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-
 const categoryController = require('../controllers/categoryController');
 
 /* GET category page. */
@@ -11,6 +10,9 @@ const categoryController = require('../controllers/categoryController');
 //     res.send('respond with a resource');
 // });
 
+
+
+router.get('/:categoryId', categoryController.category_detail);
 
 
 
