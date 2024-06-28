@@ -1,5 +1,5 @@
 const { body, validationResult } = require("express-validator");
-
+const asyncHandler = require("express-async-handler");
 const Item = require('../models/item');
 
 
@@ -16,7 +16,7 @@ exports.create_item_get = (req, res, next) => {
 
 exports.create_items_post = [
     // Validate and sanitize the name field.
-    body("name", "category name must contain at least 3 characters")
+    body("name", "item name must contain at least 3 characters")
       .trim()
       .isLength({ min: 3 })
       .escape(),
@@ -38,25 +38,25 @@ exports.create_items_post = [
   
       if (!errors.isEmpty()) {
         // There are errors. Render the form again with sanitized values/error messages.
-        res.render("create_category", {
-          title: "Create Category",
-          category: category,
+        res.render("create_item", {
+          title: "Create Item",
+          item: item,
           errors: errors.array(),
         });
         return;
       } else {
         // Data from form is valid.
         // Check if Genre with same name already exists.
-        const categoryExists = await Category.findOne({ name: req.body.name })
+        const itemExists = await Item.findOne({ name: req.body.name })
           .collation({ locale: "en", strength: 2 })
           .exec();
-        if (categoryExists) {
+        if (itemExists) {
           // Genre exists, redirect to its detail page.
-          res.redirect(categoryExists.url);
+          res.redirect(itemExists.url);
         } else {
-          await category.save();
+          await item.save();
           // New genre saved. Redirect to genre detail page.
-          res.redirect('/create_category');
+          res.redirect('/create_item');
         }
       }
     }),
