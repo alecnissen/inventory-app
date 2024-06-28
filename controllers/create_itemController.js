@@ -1,11 +1,20 @@
 const { body, validationResult } = require("express-validator");
 const asyncHandler = require("express-async-handler");
 const Item = require('../models/item');
+const Category = require("../models/category");
 
+// exports.create_item_get = (req, res, next) => { 
+//     res.render('create_item', { title: 'Create Item'});
+// }
 
-exports.create_item_get = (req, res, next) => { 
-    res.render('create_item', { title: 'Create Item'});
-}
+exports.create_item_get = asyncHandler(async (req, res, next) => { 
+    try { 
+        const categories = await Category.find().exec();
+        res.render('create_item', {title: 'Create Item', categories })
+    } catch (err) { 
+        return next(err);
+    }
+})
 
 
 
