@@ -5,6 +5,8 @@ const createCategoryController = require('../controllers/create_categoryControll
 // Define the route for '/create_category'
 router.get('/', createCategoryController.create_category_get);
 
+router.post('/', createCategoryController.create_category_post);
+
 module.exports = router;
 
 
