@@ -11,7 +11,7 @@ and creating a new item
 it will link to a form
 
 
-////////
+//////// 
 
 
 look over the code again, to understand it /
@@ -23,3 +23,14 @@ to update the form to match all parameters and
 perform post request on form, 
 
 so when form is submitted it can display new category and new item 
+
+// create links for items 
+
+// so they can be accessed for deletion or updating 
+
+
+
+
+// GOAL - to create a link for each item page, 
+
+---that way it can be updated or deleted

@@ -11,6 +11,7 @@ var categoryRouter = require('./routes/categories');
 const createCategoryRouter = require('./routes/create_category');
 const createItemRouter = require('./routes/create_item');
 const categoryDetail = require('./routes/categories');
+const itemsRouter = require('./routes/items');
 
 var app = express();
 
@@ -42,6 +43,8 @@ app.use('/users', usersRouter);
 app.use('/create_category', createCategoryRouter);
 app.use('/create_item', createItemRouter);
 app.use('/categories', categoryDetail);
+
+app.use('/items', itemsRouter);
 
 
 
