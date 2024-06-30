@@ -43,25 +43,38 @@ exports.item_detail = asyncHandler(async (req, res, next) => {
 
 
 // delete an item GET
-
 exports.item_delete_get = asyncHandler(async (req, res, next) => {
-    // Get details of author and all their books (in parallel)
-    const [item] = await Promise.all([
-      Item.findById(req.params.id).exec(),
-    //   Book.find({ author: req.params.id }, "title summary").exec(),
-    ]);
-  
-    if (item === null) {
-      // No results.
-      res.redirect('/:categoryId');
+    const itemId = req.params.itemId;
+    const item = await Item.findById(itemId);
+
+    if (!item) {
+        // Item not found, send a 404 error to indicate not found
+        const err = new Error("Item not found");
+        err.status = 404;
+        return next(err);
     }
 
-    // route for a specific item? 
-  
-    res.render("author_delete", {
-      title: "Delete Author",
-      author: author,
-      author_books: allBooksByAuthor,
+    // Render the item_detail view with the item details
+    res.render('item_detail', {
+        title: "Item Detail",
+        item: item
     });
-  });
+});
+
+// delete an item POST 
+
+exports.item_delete_post = asyncHandler(async (req, res, next) => { 
+    const itemId = req.params.itemId;
+    const item = await Item.findByIdAndDelete(itemId);
+
+    if (!item) { 
+          // Item not found, send a 404 error to indicate not found
+       const err = new Error('Item not found');
+       err.status = 404;
+       return next(err); 
+    }
+
+    res.redirect(`/categories/${item.category}`);
+})
+
 

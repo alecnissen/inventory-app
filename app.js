@@ -1,5 +1,6 @@
 var createError = require('http-errors');
 var express = require('express');
+const methodOverride = require('method-override');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -12,6 +13,7 @@ const createCategoryRouter = require('./routes/create_category');
 const createItemRouter = require('./routes/create_item');
 const categoryDetail = require('./routes/categories');
 const itemsRouter = require('./routes/items');
+const deleteItemRouter = require('./routes/delete_item');
 
 var app = express();
 
@@ -32,6 +34,8 @@ async function main() {
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+
+app.use(methodOverride('_method'));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -46,6 +50,7 @@ app.use('/categories', categoryDetail);
 
 app.use('/items', itemsRouter);
 
+app.use('/delete_item', deleteItemRouter);
 
 
 // catch 404 and forward to error handler
