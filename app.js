@@ -14,6 +14,7 @@ const createItemRouter = require('./routes/create_item');
 const categoryDetail = require('./routes/categories');
 const itemsRouter = require('./routes/items');
 const deleteItemRouter = require('./routes/delete_item');
+const updateItemRouter = require ('./routes/update_item');
 
 var app = express();
 
@@ -49,8 +50,8 @@ app.use('/create_item', createItemRouter);
 app.use('/categories', categoryDetail);
 
 app.use('/items', itemsRouter);
-
 app.use('/delete_item', deleteItemRouter);
+app.use('/update_item', updateItemRouter);
 
 
 // catch 404 and forward to error handler

@@ -8,41 +8,35 @@
     <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 <body>
-    
-
     <h1>Create an item</h1>
     
-    <form class="create-item-form" method="post" action="/create_item">
-        <label>Name</label>
-        <input type="text" name="name" />
+    <form class="create-item-form" method="POST" action="/update_item/<%= item._id %>?_method=UPDATE">
+        <label for="name">Name</label>
+        <input type="text" name="name" value="<%= item.name %>" required />
 
-        <label>Description</label>
-        <input type="text" name="description" />
+        <label for="description">Description</label>
+        <input type="text" name="description" value="<%= item.description %>" required />
 
         <label>Category</label>
-        <!-- <input type="text" name="category" /> -->
-        
         <select id="category" name="category" required>
             <% categories.forEach((category) => { %>
-                <option value="<%= category._id %>"><%= category.name %></option>
+                <option value="<%= category._id %>" <%= item.category.equals(category._id) ? 'selected' : '' %>><%= category.name %></option>
             <% }) %>
         </select>
+        
 
         <label>Price</label>
-        <input type="number" name="price" />
+        <input type="number" name="price" value="<%= item.price %>" required />
 
         <label>Number in stock</label>
-        <input type="number" name="numberInStock" />
+        <input type="number" name="numberInStock" value="<%= item.numberInStock %>" required />
 
         <label>aisle number</label>
-        <input type="number" name="aisle" />
+        <input type="number" name="aisle" value="<%= item.aisle %>" required />
 
         <button type="submit">Submit</button>
-
     </form>
 
     <a href="/">Back to home</a>
-
-
 </body>
 </html>
