@@ -27,9 +27,9 @@ body("category", "Category id must be completed.")
   .escape(),
 body("price", "Item price must be completed.")
   .trim()
-  .isLength({ min: 4 })
+  .isLength({ min: 1 })
   .escape(),
-body("number_in_stock", "Number in stock must be completed.")
+body("numberInStock", "Number in stock must be completed.")
   .trim()
   .isLength({ min: 1 })
   .escape(),
@@ -50,26 +50,25 @@ body("aisle", "Aisle is missing.")
       aisle: req.body.aisle
     });
 
-    const categories = await Category.find();
-
+   
     if (!errors.isEmpty()) {
+      const categories = await Category.find();
+      // There are errors. Render the form again with sanitized values/error messages.
       res.render("create_item", {
         title: "Create Item",
-        item: item,
         categories: categories,
+        item: item,
         errors: errors.array(),
       });
+      console.log("*******************Errors", errors)
       return;
     } else {
-      const itemExists = await Item.findOne({ name: req.body.name })
-        .collation({ locale: "en", strength: 2 })
-        .exec();
-      if (itemExists) {
-        res.redirect(itemExists.url);
-      } else {
-        await item.save();
-        res.redirect('/create_item'); 
-      }
+      await item.save();
+      console.log("*******************Saved")
+      res.redirect('/create_item'); 
     }
+
+
+
   }),
 ];
