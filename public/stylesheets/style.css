@@ -9,7 +9,8 @@ a {
 
 
 .create-item-form,
-.create-category-form { 
+.create-category-form,
+.update-item-form { 
   display: flex;
   flex-direction: column;
 }

@@ -1,71 +1,17 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= item ? 'Update Item' : 'Create Item' %></title>
-    <link rel="stylesheet" href="/stylesheets/style.css">
-</head>
-<body>
-    <h1><%= item ? 'Update Item' : 'Create an Item' %></h1>
-    
-    <form class="create-item-form" method="POST" action="<%= item ? '/update_item/' + item._id + '?_method=UPDATE' : '/create_item' %>">
-        <label for="name">Name</label>
-        <input type="text" name="name" value="<%= item ? item.name : '' %>" required />
-
-        <label for="description">Description</label>
-        <input type="text" name="description" value="<%= item ? item.description : '' %>" required />
-
-        <label>Category</label>
-        <select id="category" name="category" required>
-            <% categories.forEach((category) => { %>
-                <option value="<%= category._id %>" <%= item && String(item.category) === String(category._id) ? 'selected' : '' %>><%= category.name %></option>
-            <% }) %>
-        </select>
-        
-        <label for="price">Price</label>
-        <input type="number" name="price" value="<%= item ? item.price : '' %>" required />
-
-        <label for="numberInStock">Number in stock</label>
-        <input type="number" name="numberInStock" value="<%= item ? item.numberInStock : '' %>" required />
-
-        <label for="aisle">Aisle number</label>
-        <input type="number" name="aisle" value="<%= item ? item.aisle : '' %>" required />
-
-        <button type="submit">Submit</button>
-    </form>
-
-    <a href="/create_item">Create new item</a>
-    <a href="/">Back to home</a>
-</body>
-</html> -->
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create an item</title>
     <link rel="stylesheet" href="/stylesheets/style.css">
+    <title>Update Item</title>
 </head>
 <body>
-    <h1>Create an item</h1>
     
-    <form class="create-item-form" method="post" action="/create_item">
+    <h1>Update an Item</h1>
+    
+    <form class="update-item-form" method="post" action="/update_item/<%= item._id %>" id="update-item-form">
         <label for="name">Name</label>
         <input type="text" name="name" value="<%= item.name %>" required />
 
@@ -94,9 +40,72 @@
 
     <a href="/">Back to home</a>
 
+
 </body>
 </html>
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <title>Update Item</title>
+</head>
+<body>
+    
+    <h1>Update an Item</h1>
+    
+    <form class="update-item-form" method="post" action="/items/<%= item._id %>/update" id="update-item-form">
+        <label for="name">Name</label>
+        <input type="text" name="name" value="<%= item.name %>" required />
+
+        <label for="description">Description</label>
+        <input type="text" name="description" value="<%= item.description %>" required />
+
+        <label>Category</label>
+        <select id="category" name="category" required>
+            <% categories.forEach((category) => { %>
+                <option value="<%= category._id %>" <%= String(item.category) === String(category._id) ? 'selected' : '' %>><%= category.name %></option>
+            <% }) %>
+        </select>
+        
+        <label>Price</label>
+        <input type="number" name="price" value="<%= item.price %>" required />
+
+        <label>Number in stock</label>
+        <input type="number" name="numberInStock" value="<%= item.numberInStock %>" required />
+
+        <label>aisle number</label>
+        <input type="number" name="aisle" value="<%= item.aisle %>" required />
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <a href="/">Back to home</a>
+
+</body>
+</html> -->

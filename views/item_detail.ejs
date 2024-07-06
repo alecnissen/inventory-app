@@ -14,9 +14,19 @@
     <p><%= item.numberInStock %></p>
     <p><%= item.aisle %></p>
 
-    <form method="POST" action="/update_item/<%= item._id %>?_method=UPDATE"> 
+    <!-- original  -->
+    <!-- <form method="POST" action="/update_item"> 
     <button>Update Item</button>
+    </form> -->
+
+    <form method="GET" action="/update_item/<%= item._id %>"> 
+        <button type="submit">Update Item</button>
     </form>
+    
+    
+    
+
+    
 
     <form method="POST" action="/delete_item/<%= item._id %>?_method=DELETE">
         <button type="submit">Delete Item</button>
