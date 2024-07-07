@@ -193,14 +193,28 @@ exports.item_update_post = [
     const errors = validationResult(req);
 
     // Create an item object with escaped/trimmed data and old id.
-    const newItem = new Item({
+    // original
+    // const newItem = new Item({
+    //   name: req.body.name,
+    //   description: req.body.description,
+    //   category: req.body.category,
+    //   price: req.body.price,
+    //   numberInStock: req.body.numberInStock,
+    //   aisle: req.body.aisle,
+    // });
+
+
+    // do not create a new instance, create a new object. 
+
+    
+    const newItem = {
       name: req.body.name,
       description: req.body.description,
       category: req.body.category,
       price: req.body.price,
       numberInStock: req.body.numberInStock,
       aisle: req.body.aisle,
-    });
+    };
 
     console.log(newItem);
     
