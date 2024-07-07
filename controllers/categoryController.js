@@ -151,3 +151,42 @@ exports.category_update_get = asyncHandler(async (req, res, next) => {
 
 
 
+
+
+
+// delete an item GET
+exports.category_delete_get = asyncHandler(async (req, res, next) => {
+    const categoryId = req.params.categoryId;
+    const category = await Item.findById(categoryId);
+    const categories = await Category.find();
+
+    if (!category) {
+        // Item not found, send a 404 error to indicate not found
+        const err = new Error("Item not found");
+        err.status = 404;
+        return next(err);
+    }
+
+    // Render the item_detail view with the item details
+    res.render('create_category', {
+        title: "Delete Category",
+        category,
+    });
+});
+
+// delete an item POST 
+
+exports.category_delete_post = asyncHandler(async (req, res, next) => { 
+    const categoryId = req.params.categoryId;
+    const category = await Category.findByIdAndDelete(categoryId);
+
+    if (!category) { 
+          // Item not found, send a 404 error to indicate not found
+       const err = new Error('Category not found');
+       err.status = 404;
+       return next(err); 
+    }
+
+    res.redirect('/');
+})
+
