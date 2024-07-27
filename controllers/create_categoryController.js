@@ -47,7 +47,7 @@ exports.create_category_post = [
           .collation({ locale: "en", strength: 2 })
           .exec();
         if (categoryExists) {
-          // Genre exists, redirect to its detail page.
+          // category exists, redirect to its detail page.
           res.redirect(categoryExists.url);
         } else {
           await category.save();
